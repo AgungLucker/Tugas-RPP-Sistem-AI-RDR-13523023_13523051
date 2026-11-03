@@ -1,0 +1,115 @@
+{
+  "default_conclusion": "Yogyakarta",
+  "recommendations": [
+    "Yogyakarta",
+    "Bali",
+    "Malang",
+    "Raja Ampat",
+    "Labuan Bajo"
+  ],
+  "root_id": "R0",
+  "next_id": 5,
+  "rules": [
+    {
+      "id": "R0",
+      "conditions": [],
+      "conclusion": "Yogyakarta",
+      "cornerstone": null,
+      "true_child": "R1",
+      "false_child": null
+    },
+    {
+      "id": "R1",
+      "conditions": [
+        {
+          "attribute": "jenis_wisata",
+          "operator": "=",
+          "value": "Bahari"
+        }
+      ],
+      "conclusion": "Raja Ampat",
+      "cornerstone": {
+        "kota_asal": "Jakarta",
+        "budget": 15000000,
+        "durasi": 5,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Tidak",
+        "ramah_lansia": "Tidak"
+      },
+      "true_child": "R3",
+      "false_child": "R2"
+    },
+    {
+      "id": "R2",
+      "conditions": [
+        {
+          "attribute": "jenis_wisata",
+          "operator": "=",
+          "value": "Alam"
+        }
+      ],
+      "conclusion": "Malang",
+      "cornerstone": {
+        "kota_asal": "Surabaya",
+        "budget": 4000000,
+        "durasi": 3,
+        "jenis_wisata": "Alam",
+        "moda_transportasi": "Mobil",
+        "membawa_anak": "Tidak",
+        "ramah_lansia": "Tidak"
+      },
+      "true_child": null,
+      "false_child": null
+    },
+    {
+      "id": "R3",
+      "conditions": [
+        {
+          "attribute": "membawa_anak",
+          "operator": "=",
+          "value": "Ya"
+        },
+        {
+          "attribute": "budget",
+          "operator": "<",
+          "value": 15000000
+        }
+      ],
+      "conclusion": "Bali",
+      "cornerstone": {
+        "kota_asal": "Jakarta",
+        "budget": 8000000,
+        "durasi": 4,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Ya",
+        "ramah_lansia": "Tidak"
+      },
+      "true_child": null,
+      "false_child": "R4"
+    },
+    {
+      "id": "R4",
+      "conditions": [
+        {
+          "attribute": "durasi",
+          "operator": ">",
+          "value": 5
+        }
+      ],
+      "conclusion": "Labuan Bajo",
+      "cornerstone": {
+        "kota_asal": "Surabaya",
+        "budget": 25000000,
+        "durasi": 7,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Tidak",
+        "ramah_lansia": "Tidak"
+      },
+      "true_child": null,
+      "false_child": null
+    }
+  ]
+}

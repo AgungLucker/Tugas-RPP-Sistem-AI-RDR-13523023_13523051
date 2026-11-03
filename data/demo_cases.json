@@ -1,0 +1,169 @@
+{
+  "default_conclusion": "Yogyakarta",
+  "recommendations": [
+    "Yogyakarta",
+    "Bali",
+    "Malang",
+    "Raja Ampat",
+    "Labuan Bajo"
+  ],
+  "cases": [
+    {
+      "id": 1,
+      "description": "Jalur setuju, KB tidak berubah",
+      "case": {
+        "kota_asal": "Bandung",
+        "budget": 3000000,
+        "durasi": 3,
+        "jenis_wisata": "Budaya",
+        "moda_transportasi": "Kereta",
+        "membawa_anak": "Tidak"
+      },
+      "expected_system": "Yogyakarta",
+      "expert_agrees": true,
+      "expert_conclusion": null,
+      "expert_conditions": [],
+      "expected_status": "agree",
+      "expected_rule": null
+    },
+    {
+      "id": 2,
+      "description": "R1 jenis_wisata = bahari, true-child R0",
+      "case": {
+        "kota_asal": "Jakarta",
+        "budget": 15000000,
+        "durasi": 5,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Tidak"
+      },
+      "expected_system": "Yogyakarta",
+      "expert_agrees": false,
+      "expert_conclusion": "Raja Ampat",
+      "expert_conditions": [
+        {
+          "attribute": "jenis_wisata",
+          "operator": "=",
+          "value": "Bahari"
+        }
+      ],
+      "expected_status": "rule_added",
+      "expected_rule": {
+        "id": "R1",
+        "parent": "R0",
+        "branch": "true",
+        "conclusion": "Raja Ampat"
+      }
+    },
+    {
+      "id": 3,
+      "description": "R2 jenis_wisata = alam, false-child R1",
+      "case": {
+        "kota_asal": "Surabaya",
+        "budget": 4000000,
+        "durasi": 3,
+        "jenis_wisata": "Alam",
+        "moda_transportasi": "Mobil",
+        "membawa_anak": "Tidak"
+      },
+      "expected_system": "Yogyakarta",
+      "expert_agrees": false,
+      "expert_conclusion": "Malang",
+      "expert_conditions": [
+        {
+          "attribute": "jenis_wisata",
+          "operator": "=",
+          "value": "Alam"
+        }
+      ],
+      "expected_status": "rule_added",
+      "expected_rule": {
+        "id": "R2",
+        "parent": "R1",
+        "branch": "false",
+        "conclusion": "Malang"
+      }
+    },
+    {
+      "id": 4,
+      "description": "R3 membawa_anak = ya AND budget < 15 jt, true-child R1 (numerik + AND)",
+      "case": {
+        "kota_asal": "Jakarta",
+        "budget": 8000000,
+        "durasi": 4,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Ya"
+      },
+      "expected_system": "Raja Ampat",
+      "expert_agrees": false,
+      "expert_conclusion": "Bali",
+      "expert_conditions": [
+        {
+          "attribute": "membawa_anak",
+          "operator": "=",
+          "value": "Ya"
+        },
+        {
+          "attribute": "budget",
+          "operator": "<",
+          "value": 15000000
+        }
+      ],
+      "expected_status": "rule_added",
+      "expected_rule": {
+        "id": "R3",
+        "parent": "R1",
+        "branch": "true",
+        "conclusion": "Bali"
+      }
+    },
+    {
+      "id": 5,
+      "description": "R4 durasi > 5, false-child R3 (rule bertingkat)",
+      "case": {
+        "kota_asal": "Surabaya",
+        "budget": 25000000,
+        "durasi": 7,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Tidak"
+      },
+      "expected_system": "Raja Ampat",
+      "expert_agrees": false,
+      "expert_conclusion": "Labuan Bajo",
+      "expert_conditions": [
+        {
+          "attribute": "durasi",
+          "operator": ">",
+          "value": 5
+        }
+      ],
+      "expected_status": "rule_added",
+      "expected_rule": {
+        "id": "R4",
+        "parent": "R3",
+        "branch": "false",
+        "conclusion": "Labuan Bajo"
+      }
+    },
+    {
+      "id": 6,
+      "description": "Sama persis dengan Kasus 2 -> ditolak: tidak ada kondisi pembeda",
+      "case": {
+        "kota_asal": "Jakarta",
+        "budget": 15000000,
+        "durasi": 5,
+        "jenis_wisata": "Bahari",
+        "moda_transportasi": "Pesawat",
+        "membawa_anak": "Tidak"
+      },
+      "expected_system": "Raja Ampat",
+      "expert_agrees": false,
+      "expert_conclusion": "Bali",
+      "expert_conditions": [],
+      "expected_status": "rejected",
+      "expected_rule": null
+    }
+  ]
+}

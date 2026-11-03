@@ -1,0 +1,79 @@
+{
+  "attributes": [
+    {
+      "name": "kota_asal",
+      "label": "Kota asal",
+      "type": "categorical",
+      "values": [
+        "Bandung",
+        "Jakarta",
+        "Surabaya",
+        "Semarang",
+        "Medan"
+      ],
+      "pending_values": []
+    },
+    {
+      "name": "budget",
+      "label": "Budget",
+      "type": "numeric",
+      "unit": "Rp",
+      "min_value": 0,
+      "max_value": 1000000000
+    },
+    {
+      "name": "durasi",
+      "label": "Durasi liburan",
+      "type": "numeric",
+      "unit": "hari",
+      "min_value": 1,
+      "max_value": 365
+    },
+    {
+      "name": "jenis_wisata",
+      "label": "Jenis wisata",
+      "type": "categorical",
+      "values": [
+        "Alam",
+        "Budaya",
+        "Bahari",
+        "Mall"
+      ],
+      "pending_values": []
+    },
+    {
+      "name": "moda_transportasi",
+      "label": "Moda transportasi",
+      "type": "categorical",
+      "values": [
+        "Pesawat",
+        "Kereta",
+        "Mobil",
+        "Motor"
+      ],
+      "pending_values": []
+    },
+    {
+      "name": "membawa_anak",
+      "label": "Membawa anak-anak",
+      "type": "categorical",
+      "values": [
+        "Ya",
+        "Tidak"
+      ],
+      "pending_values": [],
+      "allow_new_values": false
+    },
+    {
+      "name": "ramah_lansia",
+      "label": "Ramah Lansia",
+      "type": "categorical",
+      "values": [
+        "Ya",
+        "Tidak"
+      ],
+      "pending_values": [],
+      "allow_new_values": false
+    }
+  ]
+}
